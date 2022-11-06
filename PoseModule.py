@@ -29,7 +29,7 @@ class poseDetector() :
         
         if self.results.pose_landmarks:
             if draw:
-                self.mpdraw.draw_landmarks(img,self.results.pose_landmarks,
+                self.mpDraw.draw_landmarks(img,self.results.pose_landmarks,
                                            self.mpPose.POSE_CONNECTIONS)
                 
         return img
