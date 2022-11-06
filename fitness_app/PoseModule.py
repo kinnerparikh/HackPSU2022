@@ -46,6 +46,12 @@ class poseDetector() :
                 if draw:
                     cv2.circle(img, (cx, cy), 5, (255,0,0), cv2.FILLED)
         return self.lmList
+
+    def getVals(self, img, p1, p2):
+        x1, y1 = self.lmList[p1][1:]
+        x2, y2 = self.lmList[p2][1:]
+
+        return [(x1, y1), (x2, y2)]
         
     def findAngle(self, img, p1, p2, p3, draw=True):   
         #Get the landmarks

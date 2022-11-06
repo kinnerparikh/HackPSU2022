@@ -2,6 +2,7 @@ from flask import render_template, Response, request
 import cv2
 from fitness_app import app
 from fitness_app import gamer
+from fitness_app import posture as po
 from fitness_app import PoseModule as pm
 from fitness_app import plank as pl
 from fitness_app import squat as sq
@@ -28,7 +29,8 @@ def index():
 	return render_template('index.html')
 '''
 
-feed = gamer.main()
+
+feed = pm.main()
 @app.route('/video_feed')
 def video_feed():
     global feed
@@ -54,6 +56,8 @@ def index():
             feed= pl.main()
         elif  request.form.get('submit_btn') == 'Squat':
             feed= sq.main()
+        elif  request.form.get('submit_btn') == 'Posture':
+            feed= po.main()
         else:
             pass # unknown
     elif request.method == 'GET':
