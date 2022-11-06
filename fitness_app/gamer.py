@@ -78,8 +78,13 @@ def main():
             cv2.putText(img, 'Pushup Counter: ' + str(int(count)), (int(width*.01), 80 ), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 0), 10)
             
             #Feedback 
-            #cv2.rectangle(img, (int(width*.85), 0), (int(width*.9), int(height*.1)), (255, 255, 255), cv2.FILLED)
+            #Feedback 
+            if feedback == "Fix Form":
+                cv2.rectangle(img, (int(width*.75), 0), (int(width*.97), int(height*.1)), (0, 40, 252), cv2.FILLED)
+            else:
+                cv2.rectangle(img, (int(width*.82), 0), (int(width*.96), int(height*.1)), (32, 255, 0), cv2.FILLED)
             cv2.putText(img, feedback, (int(width*.75), 80 ), cv2.FONT_HERSHEY_SIMPLEX, 3,(0, 0, 0), 10)
+            
         temp, buffer = cv2.imencode('.jpg', img)
         img = buffer.tobytes()
         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n')
