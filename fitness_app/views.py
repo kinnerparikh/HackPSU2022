@@ -3,6 +3,7 @@ import cv2
 from fitness_app import app
 from fitness_app import gamer
 from fitness_app import PoseModule as pm
+from fitness_app import plank as pl
 #from fitness_app.PoseModule import cap as pm_cap
 #from fitness_app.gamer import cap as gamer_cap
 '''
@@ -48,6 +49,8 @@ def index():
             feed= gamer.main()
         elif  request.form.get('submit_btn') == 'Pose Module':
             feed= pm.main()
+        elif  request.form.get('submit_btn') == 'Plank':
+            feed= pl.main()
         else:
             pass # unknown
     elif request.method == 'GET':
